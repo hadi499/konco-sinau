@@ -58,35 +58,9 @@
         @endforeach
     </div>
 
-    <div class="flex justify-center space-x-2 mt-4 text-sm">
+    <div class="mt-4 text-sm">
     {{-- Previous --}}
-    @if ($posts->onFirstPage())
-        <span class="px-3 py-1 text-gray-400 bg-gray-100 rounded">Prev</span>
-    @else
-        <a href="{{ $posts->previousPageUrl() }}" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Prev
-        </a>
-    @endif
-
-    {{-- Pages --}}
-    @foreach ($posts->getUrlRange(1, $posts->lastPage()) as $page => $url)
-        @if ($page == $posts->currentPage())
-            <span class="px-3 py-1 bg-blue-600 text-white rounded">{{ $page }}</span>
-        @else
-            <a href="{{ $url }}" class="px-3 py-1 bg-gray-100 text-gray-700 rounded hover:bg-blue-100">
-                {{ $page }}
-            </a>
-        @endif
-    @endforeach
-
-    {{-- Next --}}
-    @if ($posts->hasMorePages())
-        <a href="{{ $posts->nextPageUrl() }}" class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
-            Next
-        </a>
-    @else
-        <span class="px-3 py-1 text-gray-400 bg-gray-100 rounded">Next</span>
-    @endif
+    {{$posts->links()}}
 </div>
 
     @else

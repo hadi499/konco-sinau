@@ -26,7 +26,7 @@ class PostController extends Controller
                 $query->where('category_id', $category);
             })
             ->latest()
-            ->paginate(10)
+            ->paginate(9)
             ->withQueryString();
 
         $categories = Category::all(); // untuk dropdown filter
@@ -144,7 +144,7 @@ class PostController extends Controller
                 ->orWhere('content', 'like', "%$search%"))
             ->when($category, fn($q) => $q->where('category_id', $category))
             ->latest()
-            ->paginate(6)
+            ->paginate(9)
             ->withQueryString();
 
         $categories = Category::all();
